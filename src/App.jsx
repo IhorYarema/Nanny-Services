@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const FavoritesPage = lazy(() => import("./pages/FavoritesPage/FavoritesPage"));
+const Nannies = lazy(() => import("./pages/Nannies/Nannies"));
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} /> */}
+            <Route path="/nannies" element={<Nannies />} />
+            {/* <Route path="/register" element={<RegisterPage />} /> */}
 
             {/* приватні роути */}
             {/* <Route path="/my-recipes" element={<ProfilePage />} /> */}
