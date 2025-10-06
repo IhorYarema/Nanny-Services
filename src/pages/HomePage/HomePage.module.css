@@ -1,0 +1,90 @@
+section {
+  color: rgba(251, 251, 251, 1);
+}
+
+.sectionContainer {
+  margin: 32px;
+  background-color: rgba(240, 63, 59, 1);
+  border-radius: 30px;
+}
+
+.mainTitle {
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 70px;
+  letter-spacing: -3%;
+}
+
+.lowerTitle {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 30px;
+  letter-spacing: -2%;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -1%;
+  border-radius: 30px;
+  padding: 18px 50px;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  background-color: transparent;
+  color: rgba(251, 251, 251, 1);
+}
+
+.background {
+  width: 400px;
+  height: 200px;
+  background-image: url("../../assets/HomePagePhoto.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi) {
+  .background {
+    background-image: url("../../assets/HomePagePhoto@2x.jpg");
+  }
+}
+
+.textContainer {
+  background-color: rgba(251, 251, 251, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 284px;
+  height: 118px;
+  border-radius: 13px;
+}
+
+.textLines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkCont {
+  background-color: rgba(240, 63, 59, 1);
+  width: 52px;
+  height: 54px;
+  border-radius: 13px;
+}
+
+.text {
+  color: rgba(17, 16, 28, 0.5);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.number {
+  color: rgba(17, 16, 28, 1);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
