@@ -4,13 +4,16 @@ export default function HomePage() {
   return (
     <section>
       <div className={css.sectionContainer}>
-        <h1 className={css.mainTitle}>Make Life Easier for the Family:</h1>
-        <h2 className={css.lowerTitle}>
-          Find Babysitters Online for All Occasions
-        </h2>
-        <button className={css.btn}>
-          Get started<svg width={18} height={0} className={css.iconArrow}></svg>
-        </button>
+        <div className={css.colorBg}>
+          <h1 className={css.mainTitle}>Make Life Easier for the Family:</h1>
+          <h2 className={css.lowerTitle}>
+            Find Babysitters Online for All Occasions
+          </h2>
+          <button className={css.btn}>
+            Get started
+            <svg width={18} height={0} className={css.iconArrow}></svg>
+          </button>
+        </div>
         <div className={css.background}>
           <div className={css.textContainer}>
             <div className={css.checkCont}>
