@@ -1,0 +1,15 @@
+.navGroup {
+  display: flex;
+  justify-content: center;
+  gap: 92px;
+}
+
+.logContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.navContainer {
+  display: flex;
+  gap: 40px;
+}

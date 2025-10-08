@@ -4,7 +4,6 @@ import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const FavoritesPage = lazy(() => import("./pages/FavoritesPage/FavoritesPage"));
@@ -30,7 +29,6 @@ function App() {
           </Routes>
         </Suspense>
       </div>
-      <Footer />
     </div>
   );
 }

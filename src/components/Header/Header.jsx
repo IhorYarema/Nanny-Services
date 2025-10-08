@@ -1,73 +1,27 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { toast } from "react-toastify";
-import { auth } from "../../firebase";
-import Navigation from "./Navigation/Navigation";
+import { useLocation } from "react-router-dom";
 import css from "./Header.module.css";
+import Logo from "../Logo/Logo";
+import Navigation from "./Navigation/Navigation";
 
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  // 🔐 Відстежуємо авторизацію користувача
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      toast.success("Ви успішно вийшли!");
-      navigate("/");
-    } catch (error) {
-      toast.error("Помилка при виході: " + error.message);
-    } finally {
-      setMenuOpen(false);
-    }
-  };
+export default function Header() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
-    <header className={css.header}>
-      {" "}
+    <header className={`${css.header} ${isHome ? css.headerHome : ""}`}>
       <div className={css.container}>
-        <h1 className={css.logo} onClick={() => navigate("/")}>
-          NannyCare{" "}
-        </h1>
-        ```
-        {/* Десктопна навігація */}
-        <nav className={css.desktopNav}>
-          <Navigation
-            isLoggedIn={!!user}
-            onLogout={handleLogout}
-            closeMenu={() => {}}
-          />
+        <Logo />
+        {/* <nav className={css.nav}>
+          <a href="/">Home</a>
+          <a href="/nannies">Nannies</a>
+          <a href="/favorites">Favorites</a>
         </nav>
-        {/* Кнопка бургер для мобільного меню */}
-        <button
-          className={css.menuButton}
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          ☰
-        </button>
+        <div className={css.buttons}>
+          <button className={css.login}>Log in</button>
+          <button className={css.register}>Registration</button>
+        </div> */}
+        <Navigation />
       </div>
-      {/* Мобільне меню */}
-      {menuOpen && (
-        <div className={`${css.mobileMenu} ${css.open}`}>
-          <Navigation
-            isLoggedIn={!!user}
-            onLogout={handleLogout}
-            closeMenu={() => setMenuOpen(false)}
-            isMobile={true}
-          />
-        </div>
-      )}
     </header>
   );
 }
-
-export default Header;
