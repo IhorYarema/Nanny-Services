@@ -39,6 +39,11 @@ input {
   font-family: inherit;
 }
 
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
 a {
   color: currentColor;
   text-decoration: none;
