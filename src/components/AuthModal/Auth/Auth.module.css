@@ -1,25 +1,42 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 10px;
+.formTitle {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -2%;
+  color: rgba(17, 16, 28, 1);
 }
 
-input {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.formText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: rgba(17, 16, 28, 0.5);
+  margin-bottom: 40px;
+}
+
+.input {
+  padding: 16px auto 16px 18px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.input::placeholder {
+  color: rgba(17, 16, 28, 1);
 }
 
 .btn {
-  margin-top: 10px;
+  margin-top: 22px;
   background-color: #ff6b6b;
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 30px;
 }
