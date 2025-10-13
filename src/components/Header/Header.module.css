@@ -1,9 +1,9 @@
 .header {
   position: relative;
   width: 100%;
-  background-color: #ff6b6b; /* червоний фон для інших сторінок */
+  background-color: rgba(240, 63, 59, 1); /* червоний фон для інших сторінок */
   color: white;
-  padding: 20px 40px;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,44 +25,4 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.nav a {
-  margin: 0 15px;
-  color: inherit;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.login,
-.register {
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.login {
-  background-color: white;
-  color: #ff6b6b;
-}
-
-.register {
-  background-color: #ff6b6b;
-  color: white;
-  border: 2px solid white;
 }

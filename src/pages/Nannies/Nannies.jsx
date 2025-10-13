@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNannies } from "../../services/nannyService";
+import NanniesList from "../../components/NanniesList/NanniesList";
 
 export default function Nannies() {
   const [nannies, setNannies] = useState([]);
@@ -29,7 +30,7 @@ export default function Nannies() {
 
   return (
     <section>
-      <h2>Nannies</h2>
+      {/* <h2>Nannies</h2>
       <div>
         <h2>Список нянь</h2>
         <ul
@@ -67,7 +68,8 @@ export default function Nannies() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
+      <NanniesList />
     </section>
   );
 }
