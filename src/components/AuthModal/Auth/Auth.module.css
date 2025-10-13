@@ -22,14 +22,25 @@
 }
 
 .input {
-  padding: 16px auto 16px 18px;
+  padding: 16px 0 16px 18px;
   border: 1px solid rgba(17, 16, 28, 0.1);
   border-radius: 12px;
   margin-bottom: 18px;
+  width: 100%;
 }
 
 .input::placeholder {
   color: rgba(17, 16, 28, 1);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.btnIcon {
+  position: absolute;
+  top: 16px;
+  right: 18px;
 }
 
 .btn {

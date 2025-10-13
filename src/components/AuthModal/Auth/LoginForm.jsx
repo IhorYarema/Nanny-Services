@@ -15,13 +15,18 @@ export default function LoginForm({ onSubmit }) {
         placeholder="Email"
         required
       />
-      <input
-        className={css.input}
-        type="password"
-        name="password"
-        placeholder="Password"
-        required
-      />
+      <div className={css.inputWrapper}>
+        <input
+          className={css.input}
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button className={css.btnIcon} type="button">
+          <svg className={css.iconEye} width={20} height={20}></svg>
+        </button>
+      </div>
       <button type="submit" className={css.btn}>
         Log in
       </button>
