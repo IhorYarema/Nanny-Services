@@ -1,0 +1,35 @@
+.imgWrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  border: 2px solid rgba(240, 63, 59, 0.2);
+  padding: 12px;
+  position: relative;
+}
+
+.greenCircle {
+  position: absolute;
+  top: 9px;
+  right: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(56, 205, 62, 1);
+  border: 2px solid rgba(251, 251, 251, 1);
+  z-index: 2;
+}
+
+.img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.nameContainer {
+}
+
+.greyText {
+  color: rgba(138, 138, 137, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}

@@ -1,32 +1,32 @@
-import { useEffect, useState } from "react";
-import { getNannies } from "../../services/nannyService";
+// import { useEffect, useState } from "react";
+// import { getNannies } from "../../services/nannyService";
 import NanniesList from "../../components/NanniesList/NanniesList";
 
 export default function Nannies() {
-  const [nannies, setNannies] = useState([]);
+  // const [nannies, setNannies] = useState([]);
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getNannies();
-        const arr = Object.entries(data).map(([id, nanny]) => ({
-          id,
-          ...nanny,
-        }));
-        setNannies(arr);
-      } catch (err) {
-        setError("Не вдалося завантажити нянь 😢");
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const data = await getNannies();
+  //       const arr = Object.entries(data).map(([id, nanny]) => ({
+  //         id,
+  //         ...nanny,
+  //       }));
+  //       setNannies(arr);
+  //     } catch (err) {
+  //       setError("Не вдалося завантажити нянь 😢");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   })();
+  // }, []);
 
-  if (loading) return <p>Завантаження...</p>;
-  if (error) return <p>{error}</p>;
+  // if (loading) return <p>Завантаження...</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <section>
