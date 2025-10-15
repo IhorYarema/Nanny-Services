@@ -1,3 +1,20 @@
+.card {
+  background-color: rgba(251, 251, 251, 1);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  /* gap: 24px; */
+}
+
+.up {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
 .imgWrapper {
   width: 120px;
   height: 120px;
@@ -5,6 +22,7 @@
   border: 2px solid rgba(240, 63, 59, 0.2);
   padding: 12px;
   position: relative;
+  /* display: flex; */
 }
 
 .greenCircle {
@@ -24,7 +42,19 @@
   border-radius: 15px;
 }
 
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightUp {
+  display: flex;
+  justify-content: space-between;
+}
+
 .nameContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .greyText {
@@ -32,4 +62,19 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+}
+
+.upperInfoContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.upperInfoList {
+  display: flex;
+}
+
+.rightUpCorner {
+  display: flex;
+  flex-direction: row;
 }

@@ -2,7 +2,7 @@ import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <section>
+    <section className={css.section}>
       <div className={css.sectionContainer}>
         <div className={css.colorBg}>
           <h1 className={css.mainTitle}>Make Life Easier for the Family:</h1>
