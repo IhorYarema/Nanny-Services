@@ -62,7 +62,7 @@ export default function NannyCard({ nanny }) {
           </div>
 
           <div className={css.tags}>
-            <ul>
+            <ul className={css.tagsList}>
               <li>
                 <div className={css.itemContainer}>
                   <p className={css.greyText}>
