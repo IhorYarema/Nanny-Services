@@ -4,9 +4,13 @@ import { useState } from "react";
 export default function NannyCard({ nanny }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const handleFavoriteClick = () => {
     setIsFavorite((prev) => !prev);
   };
+
+  const toggleExpand = () => setIsExpanded((prev) => !prev);
 
   return (
     <div className={css.card}>
@@ -125,7 +129,29 @@ export default function NannyCard({ nanny }) {
 
           <p className={css.greyText}>{nanny.about}</p>
 
-          <button className={css.readMoreBtn}>Read more</button>
+          <button className={css.readMoreBtn} onClick={toggleExpand}>
+            {isExpanded ? "Hide details" : "Read more"}
+          </button>
+
+          {isExpanded && (
+            <div className={css.reviewsContainer}>
+              {nanny.reviews.map((review, index) => (
+                <ul>
+                  <li key={index} className={css.reviewItem}>
+                    <p className={css.reviewAuthor}>{review.reviewer}</p>
+                    <p className={css.reviewRating}>
+                      {review.rating.toFixed(1)}
+                    </p>
+                    <p className={css.reviewText}>{review.comment}</p>
+                  </li>
+                </ul>
+              ))}
+
+              <button className={css.appointmentBtn}>
+                Make an appointment
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
