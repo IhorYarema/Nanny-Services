@@ -1,5 +1,6 @@
 import css from "./NannyCard.module.css";
 import { useState } from "react";
+import Icon from "../Icon/Icon";
 
 export default function NannyCard({ nanny }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -59,7 +60,11 @@ export default function NannyCard({ nanny }) {
                     isFavorite ? css.heartActive : ""
                   }`}
                 >
-                  {/* <Heart /> */}
+                  <Icon
+                    className={css.iconHeart}
+                    name={isFavorite ? "heart-hover" : "heart"}
+                    size={26}
+                  />
                 </button>
               </div>
             </div>

@@ -79,6 +79,8 @@
 .upperInfoContainer {
   display: flex;
   justify-content: space-between;
+  height: 24px;
+  line-height: 24px;
 }
 
 .upperInfoList {
@@ -110,6 +112,10 @@
   margin-left: 48px;
   width: 26px;
   height: 26px;
+}
+
+.iconHeart {
+  fill: transparent;
 }
 
 .rightUpCorner {
