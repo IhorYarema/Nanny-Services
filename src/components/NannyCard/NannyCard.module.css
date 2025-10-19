@@ -69,6 +69,13 @@
   line-height: 24px;
 }
 
+.greyText400weight {
+  color: rgba(138, 138, 137, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 .upperInfoContainer {
   display: flex;
   justify-content: space-between;
@@ -131,11 +138,11 @@
   padding: 8px 16px;
 }
 
-.itemContainer .greyText {
+.itemContainer .greyText400weight {
   white-space: nowrap;
 }
 
-.itemContainer .greyText span {
+.itemContainer .greyText400weight span {
   color: rgba(17, 16, 28, 1);
 }
 
@@ -154,4 +161,52 @@
   font-size: 16px;
   line-height: 24px;
   white-space: nowrap;
+}
+
+.reviewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.reviewerInfo {
+  display: flex;
+  gap: 12px;
+}
+
+.reviewerInfoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviewerCircle {
+  background-color: rgba(240, 63, 59, 0.2);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewerFirstLetter {
+  color: rgba(240, 63, 59, 1);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.appointmentBtn {
+  background-color: rgba(240, 63, 59, 1);
+  width: 215px;
+  height: 48px;
+  border-radius: 30px;
+  padding: 14px 28px;
+  border: none;
+  color: rgba(251, 251, 251, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }

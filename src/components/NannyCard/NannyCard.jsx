@@ -69,7 +69,7 @@ export default function NannyCard({ nanny }) {
             <ul className={css.tagsList}>
               <li>
                 <div className={css.itemContainer}>
-                  <p className={css.greyText}>
+                  <p className={css.greyText400weight}>
                     Age:{" "}
                     <span className={css.itemText}>
                       {new Date().getFullYear() -
@@ -89,7 +89,7 @@ export default function NannyCard({ nanny }) {
 
               <li>
                 <div className={css.itemContainer}>
-                  <p className={css.greyText}>
+                  <p className={css.greyText400weight}>
                     Experience:{" "}
                     <span className={css.itemText}>{nanny.experience}</span>
                   </p>
@@ -98,7 +98,7 @@ export default function NannyCard({ nanny }) {
 
               <li>
                 <div className={css.itemContainer}>
-                  <p className={css.greyText}>
+                  <p className={css.greyText400weight}>
                     Kids Age:{" "}
                     <span className={css.itemText}>{nanny.kids_age}</span>
                   </p>
@@ -107,7 +107,7 @@ export default function NannyCard({ nanny }) {
 
               <li>
                 <div className={css.itemContainer}>
-                  <p className={css.greyText}>
+                  <p className={css.greyText400weight}>
                     Characters:{" "}
                     <span className={css.itemText}>
                       {nanny.characters.map((w) => w.trim()).join(", ")}
@@ -118,7 +118,7 @@ export default function NannyCard({ nanny }) {
 
               <li>
                 <div className={css.itemContainer}>
-                  <p className={css.greyText}>
+                  <p className={css.greyText400weight}>
                     Education:{" "}
                     <span className={css.itemText}>{nanny.education}</span>
                   </p>
@@ -127,7 +127,7 @@ export default function NannyCard({ nanny }) {
             </ul>
           </div>
 
-          <p className={css.greyText}>{nanny.about}</p>
+          <p className={css.greyText400weight}>{nanny.about}</p>
 
           <button className={css.readMoreBtn} onClick={toggleExpand}>
             {isExpanded ? "Hide details" : "Read more"}
@@ -138,11 +138,20 @@ export default function NannyCard({ nanny }) {
               {nanny.reviews.map((review, index) => (
                 <ul>
                   <li key={index} className={css.reviewItem}>
-                    <p className={css.reviewAuthor}>{review.reviewer}</p>
-                    <p className={css.reviewRating}>
-                      {review.rating.toFixed(1)}
-                    </p>
-                    <p className={css.reviewText}>{review.comment}</p>
+                    <div className={css.reviewerInfo}>
+                      <div className={css.reviewerCircle}>
+                        <span className={css.reviewerFirstLetter}>
+                          {review.reviewer[0]}
+                        </span>
+                      </div>
+                      <div className={css.reviewerInfoText}>
+                        <p className={css.reviewAuthor}>{review.reviewer}</p>
+                        <p className={css.reviewRating}>
+                          {review.rating.toFixed(1)}
+                        </p>
+                      </div>
+                    </div>
+                    <p className={css.greyText400weight}>{review.comment}</p>
                   </li>
                 </ul>
               ))}
