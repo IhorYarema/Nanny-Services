@@ -63,7 +63,7 @@ export default function Navigation({
           <div className={css.logContainer}>
             <NavLink
               className={({ isActive }) =>
-                `${css.link} ${isActive ? css.active : ""}`
+                `${css.logBtn} ${isActive ? css.active : ""}`
               }
               onClick={openLogin}
             >
@@ -72,7 +72,7 @@ export default function Navigation({
 
             <NavLink
               className={({ isActive }) =>
-                `${css.linkBtn} ${isActive ? css.active : ""}`
+                `${css.registerBtn} ${isActive ? css.active : ""}`
               }
               onClick={openRegister}
             >

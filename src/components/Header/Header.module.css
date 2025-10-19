@@ -15,8 +15,8 @@
   position: absolute; /* накладається поверх hero секції */
   background-color: transparent; /* прозорий */
   top: 32px;
-
   color: white;
+  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
 }
 
 .container {

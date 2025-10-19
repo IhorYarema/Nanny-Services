@@ -1,6 +1,7 @@
 .navGroup {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 92px;
 }
 
@@ -12,4 +13,23 @@
 .navContainer {
   display: flex;
   gap: 40px;
+}
+
+.logBtn {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 14px 39px;
+}
+
+.registerBtn {
+  background-color: rgba(240, 63, 59, 1);
+  color: currentColor;
+  border-radius: 30px;
+  padding: 14px 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.registerBtn:hover {
+  background-color: rgba(251, 251, 251, 1);
+  color: rgba(240, 63, 59, 1);
 }
