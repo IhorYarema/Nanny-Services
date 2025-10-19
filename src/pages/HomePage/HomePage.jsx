@@ -1,4 +1,5 @@
 import css from "./HomePage.module.css";
+import Icon from "../../components/Icon/Icon";
 
 export default function HomePage() {
   return (
@@ -11,13 +12,13 @@ export default function HomePage() {
           </h2>
           <button className={css.btn}>
             Get started
-            <svg width={18} height={0} className={css.iconArrow}></svg>
+            <Icon className={css.iconArrow} name="arrow" />
           </button>
         </div>
         <div className={css.background}>
           <div className={css.textContainer}>
             <div className={css.checkCont}>
-              <svg width={30} height={30} className={css.iconCheck}></svg>
+              <Icon className={css.iconFecheck} name="fecheck" />
             </div>
             <div className={css.textLines}>
               <p className={css.text}>Experienced nannies</p>

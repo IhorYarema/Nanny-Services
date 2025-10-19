@@ -90,6 +90,14 @@
 
 .upperInfoList li {
   position: relative;
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.iconLocation {
+  fill: transparent;
 }
 
 .upperInfoContainer li:not(:last-child)::after {
@@ -116,6 +124,13 @@
 
 .iconHeart {
   fill: transparent;
+  color: rgba(17, 16, 28, 1);
+  transition: fill 0.3s ease, color 0.3s ease;
+}
+
+.heartBtn:hover .iconHeart {
+  fill: rgba(240, 63, 59, 1);
+  color: rgba(240, 63, 59, 1);
 }
 
 .rightUpCorner {

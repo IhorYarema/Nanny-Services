@@ -39,9 +39,15 @@ export default function NannyCard({ nanny }) {
               <div className={css.upperInfoContainer}>
                 <ul className={css.upperInfoList}>
                   <li>
+                    <Icon
+                      className={css.iconLocation}
+                      name="map-pin"
+                      size={16}
+                    />
                     <p className={css.infoText}>{nanny.location}</p>
                   </li>
                   <li>
+                    <Icon className={css.iconStar} name="star" size={16} />
                     <p className={css.infoText}>{"Rating: " + nanny.rating}</p>
                   </li>
                   <li>

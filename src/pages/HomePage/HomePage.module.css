@@ -42,6 +42,19 @@
   border: 1px solid rgba(251, 251, 251, 0.4);
   background-color: transparent;
   color: rgba(251, 251, 251, 1);
+  display: flex;
+  gap: 18px;
+}
+
+.iconArrow {
+  width: 18px;
+  height: auto;
+  transform: rotate(-53deg);
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .iconArrow {
+  transform: rotate(0deg);
 }
 
 .background {
@@ -84,6 +97,14 @@
   width: 52px;
   height: 54px;
   border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconFecheck {
+  width: 20px;
+  height: 15px;
 }
 
 .text {
