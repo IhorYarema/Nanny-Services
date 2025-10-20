@@ -1,0 +1,11 @@
+.btn {
+  min-width: 159px;
+  border-radius: 30px;
+  padding: 14px 40px;
+  background-color: rgba(240, 63, 59, 1);
+  color: rgba(251, 251, 251, 1);
+  font-weight: 500;
+  border: none;
+  font-size: 16px;
+  line-height: 20px;
+}

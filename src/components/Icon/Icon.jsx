@@ -1,4 +1,3 @@
-import React from "react";
 import "../../assets/icons.svg";
 
 const Icon = ({ name, size = 24, className }) => (
