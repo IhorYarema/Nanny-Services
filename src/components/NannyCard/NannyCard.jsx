@@ -11,8 +11,6 @@ export default function NannyCard({ nanny }) {
     setIsFavorite((prev) => !prev);
   };
 
-  const toggleExpand = () => setIsExpanded((prev) => !prev);
-
   return (
     <div className={css.card}>
       <div className={css.up}>
@@ -140,14 +138,17 @@ export default function NannyCard({ nanny }) {
 
           <p className={css.greyText400weight}>{nanny.about}</p>
 
-          <button className={css.readMoreBtn} onClick={toggleExpand}>
-            {isExpanded ? "Hide details" : "Read more"}
+          <button
+            className={`${css.readMoreBtn} ${isExpanded ? css.hidden : ""}`}
+            onClick={() => setIsExpanded(true)}
+          >
+            Read more
           </button>
 
           {isExpanded && (
             <div className={css.reviewsContainer}>
-              {nanny.reviews.map((review, index) => (
-                <ul>
+              <ul>
+                {nanny.reviews.map((review, index) => (
                   <li key={index} className={css.reviewItem}>
                     <div className={css.reviewerInfo}>
                       <div className={css.reviewerCircle}>
@@ -164,8 +165,8 @@ export default function NannyCard({ nanny }) {
                     </div>
                     <p className={css.greyText400weight}>{review.comment}</p>
                   </li>
-                </ul>
-              ))}
+                ))}
+              </ul>
 
               <button className={css.appointmentBtn}>
                 Make an appointment

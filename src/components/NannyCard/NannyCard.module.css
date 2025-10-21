@@ -184,11 +184,26 @@
   white-space: nowrap;
 }
 
+.hidden {
+  display: none;
+}
+
+.reviewsContainer {
+  margin-top: 48px;
+}
+
 .reviewItem {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.reviewItem:not(:last-child) {
   margin-bottom: 25px;
+}
+
+.reviewItem:last-child {
+  margin-bottom: 48px;
 }
 
 .reviewerInfo {
