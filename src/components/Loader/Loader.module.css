@@ -1,0 +1,30 @@
+.loaderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.loader {
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(240, 63, 59, 0.2); /* светло-серый */
+  border-top-color: rgba(240, 63, 59, 1); /* мятный/зеленый акцент */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 16px;
+  color: rgba(240, 63, 59, 1);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

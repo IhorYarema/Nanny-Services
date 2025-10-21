@@ -3,6 +3,7 @@ import NannyCard from "../NannyCard/NannyCard";
 import { useEffect, useState } from "react";
 import { getNannies } from "../../services/nannyService";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
+import Loader from "../Loader/Loader";
 
 export default function NanniesList() {
   const [nannies, setNannies] = useState([]);
@@ -32,7 +33,7 @@ export default function NanniesList() {
     })();
   }, []);
 
-  if (loading) return <p>Завантаження...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
 
   const totalPages = Math.ceil(nannies.length / nanniesPerPage);
