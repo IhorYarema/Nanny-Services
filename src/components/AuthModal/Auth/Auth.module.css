@@ -41,6 +41,12 @@
   position: absolute;
   top: 16px;
   right: 18px;
+  border: none;
+  background-color: transparent;
+}
+
+.iconEye {
+  fill: none;
 }
 
 .btn {

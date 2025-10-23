@@ -159,6 +159,11 @@ export default function NannyCard({ nanny }) {
                       <div className={css.reviewerInfoText}>
                         <p className={css.reviewAuthor}>{review.reviewer}</p>
                         <p className={css.reviewRating}>
+                          <Icon
+                            className={css.iconStar}
+                            name="star"
+                            size={16}
+                          />
                           {review.rating.toFixed(1)}
                         </p>
                       </div>

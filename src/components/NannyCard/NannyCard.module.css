@@ -211,6 +211,15 @@
   gap: 12px;
 }
 
+.reviewRating {
+  display: flex;
+  align-items: center;
+}
+
+.reviewRating .iconStar {
+  margin-right: 8px;
+}
+
 .reviewerInfoText {
   display: flex;
   flex-direction: column;

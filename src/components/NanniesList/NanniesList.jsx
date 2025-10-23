@@ -50,7 +50,7 @@ export default function NanniesList() {
       <ul className={css.list}>
         {Array.isArray(visibleNannies) &&
           visibleNannies.map((nanny) => (
-            <li key={nanny._id}>
+            <li key={nanny.id}>
               <NannyCard nanny={nanny} />
             </li>
           ))}
