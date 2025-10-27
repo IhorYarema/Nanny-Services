@@ -4,6 +4,11 @@ import AuthModal from "../../AuthModal/AuthModal";
 import LoginForm from "../../AuthModal/Auth/LoginForm";
 import RegisterForm from "../../AuthModal/Auth/RegisterForm";
 import { useState } from "react";
+import { auth } from "../../../firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 export default function Navigation({
   isLoggedIn = false,
@@ -25,6 +30,41 @@ export default function Navigation({
   const closeModal = () => {
     setShowModal(false);
     setModalType(null);
+  };
+
+  // ✅ Реєстрація + авто-вхід
+  const handleRegister = async (data) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      console.log("✅ Registered:", userCredential.user);
+
+      // одразу логіниться
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      closeModal();
+    } catch (error) {
+      console.error("❌ Register error:", error.message);
+      alert("Registration failed. Please try again.");
+    }
+  };
+
+  // ✅ Функція логіну
+  const handleLogin = async (data) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      console.log("✅ Logged in:", userCredential.user);
+      closeModal();
+    } catch (error) {
+      console.error("❌ Login error:", error.message);
+      alert("Invalid email or password");
+    }
   };
 
   return (
@@ -80,7 +120,7 @@ export default function Navigation({
             </NavLink>
           </div>
         ) : (
-          <button className={css.linkBtn} onClick={onLogout}>
+          <button className={css.logOutBtn} onClick={onLogout}>
             Logout
           </button>
         )}
@@ -89,9 +129,9 @@ export default function Navigation({
       {showModal && (
         <AuthModal onClose={closeModal}>
           {modalType === "login" ? (
-            <LoginForm onSubmit={() => {}} />
+            <LoginForm onSubmit={handleLogin} />
           ) : (
-            <RegisterForm onSubmit={() => {}} />
+            <RegisterForm onSubmit={handleRegister} />
           )}
         </AuthModal>
       )}

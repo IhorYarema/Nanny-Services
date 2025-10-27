@@ -3,7 +3,7 @@ import css from "./Header.module.css";
 import Logo from "../Logo/Logo";
 import Navigation from "./Navigation/Navigation";
 
-export default function Header() {
+export default function Header({ isLoggedIn, onLogout }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -11,7 +11,7 @@ export default function Header() {
     <header className={`${css.header} ${isHome ? css.headerHome : ""}`}>
       <div className={css.container}>
         <Logo />
-        <Navigation />
+        <Navigation isLoggedIn={isLoggedIn} onLogout={onLogout} />
       </div>
     </header>
   );

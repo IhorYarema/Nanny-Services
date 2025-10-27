@@ -33,3 +33,13 @@
   background-color: rgba(251, 251, 251, 1);
   color: rgba(240, 63, 59, 1);
 }
+
+.logOutBtn {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  color: rgba(251, 251, 251, 1);
+  background-color: rgba(240, 63, 59, 1);
+  /* width: 134;
+height: 48; */
+  border-radius: 30px;
+  padding: 14px 39px;
+}
