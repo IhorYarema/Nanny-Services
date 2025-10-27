@@ -12,14 +12,14 @@ const FavoritesPage = lazy(() => import("./pages/FavoritesPage/FavoritesPage"));
 const Nannies = lazy(() => import("./pages/Nannies/Nannies"));
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
   // 🔥 Слухаємо зміни авторизації Firebase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoggedIn(!!user); // якщо є користувач -> true
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
     });
-    return () => unsubscribe(); // очистка при анмаунті
+    return () => unsubscribe();
   }, []);
 
   // 🔹 Logout
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className={css.appWrapper}>
-      <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Header user={user} onLogout={handleLogout} />
       <div className={css.pageContent}>
         <Suspense fallback={<Loader />}>
           <Routes>

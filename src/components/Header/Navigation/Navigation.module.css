@@ -5,6 +5,10 @@
   gap: 92px;
 }
 
+.navGroupNotHome {
+  gap: 217px;
+}
+
 .logContainer {
   display: flex;
   gap: 8px;
@@ -38,8 +42,23 @@
   border: 1px solid rgba(251, 251, 251, 0.4);
   color: rgba(251, 251, 251, 1);
   background-color: rgba(240, 63, 59, 1);
-  /* width: 134;
-height: 48; */
   border-radius: 30px;
   padding: 14px 39px;
+}
+
+.logInContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.userContainer {
+  background-color: rgba(251, 251, 251, 1);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

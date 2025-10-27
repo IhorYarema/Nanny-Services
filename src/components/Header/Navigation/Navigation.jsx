@@ -1,21 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import css from "./Navigation.module.css";
 import AuthModal from "../../AuthModal/AuthModal";
 import LoginForm from "../../AuthModal/Auth/LoginForm";
 import RegisterForm from "../../AuthModal/Auth/RegisterForm";
+import Icon from "../../Icon/Icon";
 import { useState } from "react";
 import { auth } from "../../../firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
-export default function Navigation({
-  isLoggedIn = false,
-  onLogout = () => {},
-}) {
+export default function Navigation({ user, isLoggedIn, onLogout }) {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null); // "login" | "register"
+
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const openLogin = () => {
     setModalType("login");
@@ -40,6 +42,12 @@ export default function Navigation({
         data.email,
         data.password
       );
+
+      // 👇 Додаємо displayName (можеш замінити логіку на data.name, якщо є таке поле)
+      await updateProfile(userCredential.user, {
+        displayName: data.email.split("@")[0], // або data.name, якщо буде
+      });
+
       console.log("✅ Registered:", userCredential.user);
 
       // одразу логіниться
@@ -69,7 +77,11 @@ export default function Navigation({
 
   return (
     <>
-      <nav className={css.navGroup}>
+      <nav
+        className={`${css.navGroup} ${
+          isHome ? css.navGroupHome : css.navGroupNotHome
+        }`}
+      >
         <div className={css.navContainer}>
           <NavLink
             to="/"
@@ -120,9 +132,15 @@ export default function Navigation({
             </NavLink>
           </div>
         ) : (
-          <button className={css.logOutBtn} onClick={onLogout}>
-            Logout
-          </button>
+          <div className={css.logInContainer}>
+            <div className={css.userContainer}>
+              <Icon className={css.iconUser} name="mdi_user" />
+            </div>
+            <p className={css.userName}>{user.displayName}</p>
+            <button className={css.logOutBtn} onClick={onLogout}>
+              Logout
+            </button>
+          </div>
         )}
       </nav>
 
