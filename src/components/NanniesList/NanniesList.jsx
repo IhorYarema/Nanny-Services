@@ -1,12 +1,11 @@
 import css from "./NanniesList.module.css";
 import NannyCard from "../NannyCard/NannyCard";
 import { useEffect, useState } from "react";
-import { getNannies } from "../../services/nannyService";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 import Loader from "../Loader/Loader";
 
-export default function NanniesList() {
-  const [nannies, setNannies] = useState([]);
+export default function NanniesList({ nannies }) {
+  // const [nannies, setNannies] = useState([]);
   const [visibleNannies, setVisibleNannies] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -18,20 +17,15 @@ export default function NanniesList() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await getNannies();
-        const arr = Object.entries(data).map(([id, nanny]) => ({
-          id,
-          ...nanny,
-        }));
-        setNannies(arr);
-        setVisibleNannies(arr.slice(0, nanniesPerPage));
+        setVisibleNannies(nannies.slice(0, nanniesPerPage));
+        setCurrentPage(1);
       } catch (err) {
         setError("Не вдалося завантажити нянь 😢");
       } finally {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [nannies]);
 
   if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
