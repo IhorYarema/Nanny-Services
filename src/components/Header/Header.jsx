@@ -3,7 +3,7 @@ import css from "./Header.module.css";
 import Logo from "../Logo/Logo";
 import Navigation from "./Navigation/Navigation";
 
-export default function Header({ user, onLogout }) {
+export default function Header({ user, onLogout, setUser }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isLoggedIn = !!user;
@@ -12,7 +12,12 @@ export default function Header({ user, onLogout }) {
     <header className={`${css.header} ${isHome ? css.headerHome : ""}`}>
       <div className={`${css.container} ${isHome ? css.containerHome : ""}`}>
         <Logo />
-        <Navigation user={user} isLoggedIn={isLoggedIn} onLogout={onLogout} />
+        <Navigation
+          user={user}
+          isLoggedIn={isLoggedIn}
+          onLogout={onLogout}
+          setUser={setUser}
+        />
       </div>
     </header>
   );

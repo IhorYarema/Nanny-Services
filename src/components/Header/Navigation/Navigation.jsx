@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-export default function Navigation({ user, isLoggedIn, onLogout }) {
+export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null); // "login" | "register"
 
@@ -37,21 +37,26 @@ export default function Navigation({ user, isLoggedIn, onLogout }) {
   // ✅ Реєстрація + авто-вхід
   const handleRegister = async (data) => {
     try {
+      // створюємо користувача
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
 
-      // 👇 Додаємо displayName (можеш замінити логіку на data.name, якщо є таке поле)
+      // додаємо ім’я
       await updateProfile(userCredential.user, {
-        displayName: data.email.split("@")[0], // або data.name, якщо буде
+        displayName: data.name,
       });
 
-      console.log("✅ Registered:", userCredential.user);
+      // ⬇️ одразу оновлюємо локальний стан без перезавантаження
+      setUser({ ...auth.currentUser });
 
-      // одразу логіниться
-      await signInWithEmailAndPassword(auth, data.email, data.password);
+      // 🔥 оновлюємо користувача в Firebase (важливо!)
+      await auth.currentUser.reload();
+
+      console.log("✅ Registered:", auth.currentUser);
+
       closeModal();
     } catch (error) {
       console.error("❌ Register error:", error.message);
@@ -133,10 +138,12 @@ export default function Navigation({ user, isLoggedIn, onLogout }) {
           </div>
         ) : (
           <div className={css.logInContainer}>
-            <div className={css.userContainer}>
-              <Icon className={css.iconUser} name="mdi_user" />
+            <div className={css.userInfoContainer}>
+              <div className={css.userContainer}>
+                <Icon className={css.iconUser} name="mdi_user" />
+              </div>
+              <p className={css.userName}>{user.displayName}</p>
             </div>
-            <p className={css.userName}>{user.displayName}</p>
             <button className={css.logOutBtn} onClick={onLogout}>
               Logout
             </button>

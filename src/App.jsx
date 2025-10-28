@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className={css.appWrapper}>
-      <Header user={user} onLogout={handleLogout} />
+      <Header user={user} onLogout={handleLogout} setUser={setUser} />
       <div className={css.pageContent}>
         <Suspense fallback={<Loader />}>
           <Routes>
