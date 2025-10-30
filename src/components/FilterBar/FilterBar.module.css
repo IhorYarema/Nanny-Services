@@ -1,25 +1,19 @@
 .filterBar {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  max-width: 226px;
 }
 
 .label {
   font-weight: 500;
-  color: #444;
-}
-
-.select {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: white;
   font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
+  line-height: 18px;
+  color: rgba(138, 138, 137, 1);
 }
 
-.select:hover {
-  border-color: #555;
+/* контейнер селекта */
+.reactSelectContainer {
+  width: 100%;
 }

@@ -3,6 +3,7 @@ import NannyCard from "../NannyCard/NannyCard";
 import { useEffect, useState } from "react";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 import Loader from "../Loader/Loader";
+import { toast } from "react-hot-toast";
 
 export default function NanniesList({ nannies }) {
   // const [nannies, setNannies] = useState([]);
@@ -45,7 +46,12 @@ export default function NanniesList({ nannies }) {
         {Array.isArray(visibleNannies) &&
           visibleNannies.map((nanny) => (
             <li key={nanny.id}>
-              <NannyCard nanny={nanny} />
+              <NannyCard
+                nanny={nanny}
+                onRequireAuth={() =>
+                  toast.error("Please log in to add to favorites!")
+                }
+              />
             </li>
           ))}
       </ul>

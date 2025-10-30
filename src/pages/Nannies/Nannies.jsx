@@ -39,16 +39,16 @@ export default function Nannies() {
         result.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case "cheap":
-        result = result.filter((n) => n.price < 10);
+        result = result.filter((n) => n.price_per_hour < 10);
         break;
       case "expensive":
-        result = result.filter((n) => n.price >= 10);
+        result = result.filter((n) => n.price_per_hour >= 10);
         break;
       case "popular":
-        result = result.filter((n) => n.popular);
+        result = result.sort((a, b) => b.rating - a.rating);
         break;
       case "unpopular":
-        result = result.filter((n) => !n.popular);
+        result = result.sort((a, b) => a.rating - b.rating);
         break;
       default:
         break;

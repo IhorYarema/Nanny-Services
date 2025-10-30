@@ -1,31 +1,41 @@
 import { useState } from "react";
+import Select from "react-select";
 import css from "./FilterBar.module.css";
+import "./FilterBar.css";
 
 export default function FilterBar({ onFilterChange }) {
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setSelectedFilter(value);
-    onFilterChange(value);
+  const options = [
+    { value: "az", label: "A to Z" },
+    { value: "za", label: "Z to A" },
+    { value: "cheap", label: "Less than 10$" },
+    { value: "expensive", label: "Greater than 10$" },
+    { value: "popular", label: "Popular" },
+    { value: "unpopular", label: "Not popular" },
+    { value: "all", label: "Show all" },
+  ];
+
+  const handleChange = (option) => {
+    setSelectedFilter(option);
+    onFilterChange(option.value);
   };
 
   return (
     <div className={css.filterBar}>
-      <label className={css.label}>Sort by:</label>
-      <select
-        className={css.select}
-        value={selectedFilter}
-        onChange={handleChange}
-      >
-        <option value="all">Show all</option>
-        <option value="az">A–Z</option>
-        <option value="za">Z–A</option>
-        <option value="cheap">Price &lt; $10</option>
-        <option value="expensive">Price &gt; $10</option>
-        <option value="popular">Popular</option>
-        <option value="unpopular">Unpopular</option>
-      </select>
+      <label className={css.label}>Filters</label>
+      <div className={css.selectWrapper}>
+        <Select
+          value={selectedFilter}
+          onChange={handleChange}
+          options={options}
+          default={options[7]}
+          // styles={customStyles}
+          // placeholder="Select filter..."
+          className={css.reactSelectContainer}
+          classNamePrefix="custom"
+        />
+      </div>
     </div>
   );
 }

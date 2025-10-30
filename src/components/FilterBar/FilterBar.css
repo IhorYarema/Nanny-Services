@@ -1,0 +1,47 @@
+.custom__control {
+  background-color: rgba(240, 63, 59, 1);
+  border: none;
+  border-radius: 14px;
+  padding: 18px 14px;
+  height: 48px;
+  /* display: flex;
+  align-items: center; */
+}
+
+.custom_input-container {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: rgba(251, 251, 251, 1);
+  height: 100%;
+}
+
+.custom__single-value {
+  color: #fff;
+}
+
+.custom__menu {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom__option {
+  background-color: #fff;
+  color: #333;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.custom__option--is-focused {
+  background-color: #f0f0f0;
+}
+
+.custom__option--is-selected {
+  background-color: #e63946;
+  color: #fff;
+}
+
+/* стрелка */
+.custom__dropdown-indicator svg {
+  fill: #fff;
+}
