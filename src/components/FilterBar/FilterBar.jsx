@@ -4,8 +4,6 @@ import css from "./FilterBar.module.css";
 import "./FilterBar.css";
 
 export default function FilterBar({ onFilterChange }) {
-  const [selectedFilter, setSelectedFilter] = useState(null);
-
   const options = [
     { value: "az", label: "A to Z" },
     { value: "za", label: "Z to A" },
@@ -15,6 +13,8 @@ export default function FilterBar({ onFilterChange }) {
     { value: "unpopular", label: "Not popular" },
     { value: "all", label: "Show all" },
   ];
+
+  const [selectedFilter, setSelectedFilter] = useState(options[6]);
 
   const handleChange = (option) => {
     setSelectedFilter(option);
@@ -26,12 +26,11 @@ export default function FilterBar({ onFilterChange }) {
       <label className={css.label}>Filters</label>
       <div className={css.selectWrapper}>
         <Select
+          unstyled
           value={selectedFilter}
           onChange={handleChange}
           options={options}
-          default={options[7]}
-          // styles={customStyles}
-          // placeholder="Select filter..."
+          isSearchable={false}
           className={css.reactSelectContainer}
           classNamePrefix="custom"
         />

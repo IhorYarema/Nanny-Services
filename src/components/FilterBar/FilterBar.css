@@ -2,46 +2,53 @@
   background-color: rgba(240, 63, 59, 1);
   border: none;
   border-radius: 14px;
-  padding: 18px 14px;
-  height: 48px;
-  /* display: flex;
-  align-items: center; */
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  /* height: 48px; */
+
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .custom_input-container {
+}
+
+.custom__single-value {
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
   color: rgba(251, 251, 251, 1);
-  height: 100%;
-}
-
-.custom__single-value {
-  color: #fff;
 }
 
 .custom__menu {
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 14px;
+  margin-top: 8px;
+  box-shadow: 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
   overflow: hidden;
+  padding: 14px 18px;
 }
 
 .custom__option {
-  background-color: #fff;
-  color: #333;
-  padding: 8px 12px;
+  color: rgba(17, 16, 28, 0.3);
   cursor: pointer;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
 }
 
-.custom__option--is-focused {
-  background-color: #f0f0f0;
+.custom__option:not(:last-child) {
+  margin-bottom: 12px;
 }
 
 .custom__option--is-selected {
-  background-color: #e63946;
-  color: #fff;
+  color: rgba(17, 16, 28, 1);
 }
 
 /* стрелка */
 .custom__dropdown-indicator svg {
-  fill: #fff;
+  fill: rgba(251, 251, 251, 1);
+  width: 20px;
+  height: 20px;
 }
