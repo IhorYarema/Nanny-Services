@@ -1,14 +1,80 @@
 import css from "./NannyCard.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../Icon/Icon";
+import { toast } from "react-hot-toast";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  doc,
+  setDoc,
+  arrayUnion,
+  arrayRemove,
+  onSnapshot,
+} from "firebase/firestore";
+import { dbFirestore } from "../../firebase"; // ⚠️ твій файл firebase.js
 
 export default function NannyCard({ nanny }) {
+  const auth = getAuth();
+  const [user, setUser] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
-
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleFavoriteClick = () => {
-    setIsFavorite((prev) => !prev);
+  // 👂 Следим за авторизацией
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
+    return () => unsubscribe();
+  }, [auth]);
+
+  // 📦 Подписка на изменения favorites текущего пользователя
+  useEffect(() => {
+    if (!user) return setIsFavorite(false);
+
+    const userRef = doc(dbFirestore, "users", user.uid);
+
+    const unsubscribe = onSnapshot(
+      userRef,
+      (docSnap) => {
+        if (docSnap.exists()) {
+          const favorites = docSnap.data().favorites || [];
+          setIsFavorite(favorites.includes(nanny.id));
+        } else {
+          setIsFavorite(false);
+        }
+      },
+      (error) => {
+        console.error("Ошибка подписки на пользователя:", error);
+        toast.error("Не удалось получить данные пользователя 😢");
+      }
+    );
+
+    return () => unsubscribe();
+  }, [user, nanny.id]);
+
+  // ❤️ Клик на сердце
+  const handleFavoriteClick = async () => {
+    if (!user) {
+      toast.error("Только авторизованные пользователи 💡");
+      return;
+    }
+
+    const userRef = doc(dbFirestore, "users", user.uid);
+
+    try {
+      await setDoc(
+        userRef,
+        {
+          favorites: isFavorite ? arrayRemove(nanny.id) : arrayUnion(nanny.id),
+        },
+        { merge: true }
+      );
+
+      setIsFavorite(!isFavorite);
+      toast.success(
+        isFavorite ? "Удалено из избранного ❌" : "Добавлено в избранное ❤️"
+      );
+    } catch (err) {
+      console.error("Ошибка при обновлении избранного:", err);
+      toast.error("Произошла ошибка 😢");
+    }
   };
 
   return (
@@ -59,6 +125,7 @@ export default function NannyCard({ nanny }) {
                   </li>
                 </ul>
                 <button
+                  // disabled={!nanny?.docId}
                   onClick={handleFavoriteClick}
                   className={`${css.heartBtn} ${
                     isFavorite ? css.heartActive : ""
