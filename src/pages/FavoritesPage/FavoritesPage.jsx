@@ -15,7 +15,6 @@ export default function FavoritesPage() {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  // Слушаем авторизацию
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
@@ -24,7 +23,6 @@ export default function FavoritesPage() {
     return () => unsubscribe();
   }, []);
 
-  // Загружаем избранных нянь
   useEffect(() => {
     if (!user) return;
 
@@ -32,7 +30,6 @@ export default function FavoritesPage() {
       try {
         setLoading(true);
 
-        // 1️⃣ Получаем массив избранных из Firestore
         const favDoc = await getDoc(doc(dbFirestore, "users", user.uid));
         if (!favDoc.exists()) {
           setFavorites([]);
@@ -41,7 +38,6 @@ export default function FavoritesPage() {
 
         const favData = favDoc.data();
 
-        // Преобразуем в массив, если нужно
         const favIds = Array.isArray(favData.favorites)
           ? favData.favorites
           : Object.values(favData.favorites || []);
@@ -50,9 +46,8 @@ export default function FavoritesPage() {
           return;
         }
 
-        // 2️⃣ Подгружаем данные нянь из Realtime Database
         const nannyPromises = favIds.map(async (id) => {
-          const nannySnap = await get(ref(db, id)); // путь в корень Realtime
+          const nannySnap = await get(ref(db, id));
           return nannySnap.exists() ? { id, ...nannySnap.val() } : null;
         });
 
@@ -66,7 +61,6 @@ export default function FavoritesPage() {
     })();
   }, [user]);
 
-  // Фильтрация и сортировка
   const filteredFavorites = useMemo(() => {
     let result = [...favorites];
 
@@ -97,9 +91,10 @@ export default function FavoritesPage() {
   }, [filter, favorites]);
 
   if (loading) return <Loader />;
-  if (error) return <p>{error}</p>;
-  if (!user) return <p>Вы не авторизованы</p>;
-  if (favorites.length === 0) return <p>Нет избранных нянь</p>;
+  if (error) return <p className={css.warning}>{error}</p>;
+  if (!user) return <p className={css.warning}>You are not authorized</p>;
+  if (favorites.length === 0)
+    return <p className={css.warning}>There are no selected nannies</p>;
 
   return (
     <section className={css.section_nannies}>

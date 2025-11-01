@@ -19,6 +19,41 @@
   gap: 40px;
 }
 
+.link {
+  position: relative;
+}
+
+.navGroupNotHome .link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* плавное появление точки */
+.navGroupNotHome .link::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.navGroupNotHome .link.active::after {
+  transform: translateX(-50%) scale(1);
+}
+
 .logBtn {
   border: 1px solid rgba(251, 251, 251, 0.4);
   border-radius: 30px;
