@@ -1,0 +1,115 @@
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: start;
+  margin-bottom: 20px;
+}
+
+.greyTextUnderTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(138, 138, 137, 1);
+  margin-bottom: 40px;
+}
+
+.greyText {
+  color: rgba(138, 138, 137, 1);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.imgWrapper {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.img {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.timeInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.timeIcon {
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  fill: none;
+  pointer-events: none;
+}
+
+.inputInContainer.react-time-picker .react-time-picker__clock,
+.inputInContainer.react-time-picker .react-time-picker__clear-button {
+  display: none;
+}
+
+.inputInContainer,
+.input,
+.textarea {
+  font-family: inherit;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  background-color: rgba(251, 251, 251, 1);
+  color: rgba(17, 16, 28, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+}
+
+.textarea {
+  height: 116px;
+}
+
+.inputInContainer::placeholder,
+.input::placeholder,
+.textarea::placeholder {
+  font-family: inherit;
+  color: rgba(17, 16, 28, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.submitBtn {
+  margin-top: 24px;
+  border-radius: 30px;
+  padding: 16px 217px;
+  color: rgba(251, 251, 251, 1);
+  background-color: rgba(240, 63, 59, 1);
+  border: none;
+}

@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-// ✅ Схема валідації
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
@@ -15,7 +14,6 @@ const schema = yup.object().shape({
 });
 
 export default function LoginForm({ onSubmit }) {
-  // ✅ Підключаємо react-hook-form
   const {
     register,
     handleSubmit,
@@ -25,7 +23,6 @@ export default function LoginForm({ onSubmit }) {
     mode: "onTouched",
   });
 
-  // Обгортка для сабміту
   const handleFormSubmit = (data) => {
     if (onSubmit) onSubmit(data);
   };

@@ -55,8 +55,6 @@ export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
       // 🔥 оновлюємо користувача в Firebase (важливо!)
       await auth.currentUser.reload();
 
-      console.log("✅ Registered:", auth.currentUser);
-
       closeModal();
     } catch (error) {
       console.error("❌ Register error:", error.message);
@@ -72,10 +70,8 @@ export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
         data.email,
         data.password
       );
-      console.log("✅ Logged in:", userCredential.user);
       closeModal();
     } catch (error) {
-      console.error("❌ Login error:", error.message);
       alert("Invalid email or password");
     }
   };

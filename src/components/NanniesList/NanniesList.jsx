@@ -6,7 +6,6 @@ import Loader from "../Loader/Loader";
 import { toast } from "react-hot-toast";
 
 export default function NanniesList({ nannies }) {
-  // const [nannies, setNannies] = useState([]);
   const [visibleNannies, setVisibleNannies] = useState([]);
 
   const [loading, setLoading] = useState(true);

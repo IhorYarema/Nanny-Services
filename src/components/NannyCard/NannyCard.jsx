@@ -10,21 +10,21 @@ import {
   arrayRemove,
   onSnapshot,
 } from "firebase/firestore";
-import { dbFirestore } from "../../firebase"; // ⚠️ твій файл firebase.js
+import { dbFirestore } from "../../firebase";
+import AppointmentModal from "../AppointmentModal/AppointmentModal";
 
 export default function NannyCard({ nanny }) {
   const auth = getAuth();
   const [user, setUser] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  // 👂 Следим за авторизацией
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
     return () => unsubscribe();
   }, [auth]);
 
-  // 📦 Подписка на изменения favorites текущего пользователя
   useEffect(() => {
     if (!user) return setIsFavorite(false);
 
@@ -41,18 +41,16 @@ export default function NannyCard({ nanny }) {
         }
       },
       (error) => {
-        console.error("Ошибка подписки на пользователя:", error);
-        toast.error("Не удалось получить данные пользователя 😢");
+        toast.error("Failed to get user data 😢");
       }
     );
 
     return () => unsubscribe();
   }, [user, nanny.id]);
 
-  // ❤️ Клик на сердце
   const handleFavoriteClick = async () => {
     if (!user) {
-      toast.error("Только авторизованные пользователи 💡");
+      toast.error("Only authorized users 💡");
       return;
     }
 
@@ -69,11 +67,10 @@ export default function NannyCard({ nanny }) {
 
       setIsFavorite(!isFavorite);
       toast.success(
-        isFavorite ? "Удалено из избранного ❌" : "Добавлено в избранное ❤️"
+        isFavorite ? "Removed from favorites ❌" : "Added to favorites ❤️"
       );
     } catch (err) {
-      console.error("Ошибка при обновлении избранного:", err);
-      toast.error("Произошла ошибка 😢");
+      toast.error("An error occurred 😢");
     }
   };
 
@@ -98,7 +95,6 @@ export default function NannyCard({ nanny }) {
               <h3 className={css.name}>{nanny.name}</h3>
             </div>
 
-            {/* Upper Block rating loc ... */}
             <div className={css.rightUpCorner}>
               <div className={css.upperInfoContainer}>
                 <ul className={css.upperInfoList}>
@@ -125,7 +121,6 @@ export default function NannyCard({ nanny }) {
                   </li>
                 </ul>
                 <button
-                  // disabled={!nanny?.docId}
                   onClick={handleFavoriteClick}
                   className={`${css.heartBtn} ${
                     isFavorite ? css.heartActive : ""
@@ -240,13 +235,19 @@ export default function NannyCard({ nanny }) {
                 ))}
               </ul>
 
-              <button className={css.appointmentBtn}>
+              <button
+                className={css.appointmentBtn}
+                onClick={() => setShowModal(true)}
+              >
                 Make an appointment
               </button>
             </div>
           )}
         </div>
       </div>
+      {showModal && (
+        <AppointmentModal nanny={nanny} onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 }

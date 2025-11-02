@@ -54,7 +54,7 @@ export default function FavoritesPage() {
         const nannyList = (await Promise.all(nannyPromises)).filter(Boolean);
         setFavorites(nannyList);
       } catch (err) {
-        setError("Ошибка при загрузке избранных 😢");
+        setError("Error loading favorites 😢");
       } finally {
         setLoading(false);
       }
