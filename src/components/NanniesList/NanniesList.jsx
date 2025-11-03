@@ -5,11 +5,12 @@ import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 import Loader from "../Loader/Loader";
 import { toast } from "react-hot-toast";
 
-export default function NanniesList({ nannies }) {
+export default function NanniesList({ nannies, onRemoveFavorite }) {
   const [visibleNannies, setVisibleNannies] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [removingIds, setRemovingIds] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const nanniesPerPage = 3;
@@ -20,7 +21,7 @@ export default function NanniesList({ nannies }) {
         setVisibleNannies(nannies.slice(0, nanniesPerPage));
         setCurrentPage(1);
       } catch (err) {
-        setError("Не вдалося завантажити нянь 😢");
+        setError("Failed to load nannies 😢");
       } finally {
         setLoading(false);
       }
@@ -39,14 +40,26 @@ export default function NanniesList({ nannies }) {
     setCurrentPage(nextPage);
   };
 
+  const handleRemoveWithAnimation = (id) => {
+    setRemovingIds((prev) => [...prev, id]);
+    setTimeout(() => {
+      setRemovingIds((prev) => prev.filter((rid) => rid !== id));
+      onRemoveFavorite(id);
+    }, 300);
+  };
+
   return (
     <div className={css.listContainer}>
       <ul className={css.list}>
         {Array.isArray(visibleNannies) &&
           visibleNannies.map((nanny) => (
-            <li key={nanny.id}>
+            <li
+              key={nanny.id}
+              className={removingIds.includes(nanny.id) ? css.removing : ""}
+            >
               <NannyCard
                 nanny={nanny}
+                onRemoveFavorite={() => handleRemoveWithAnimation(nanny.id)}
                 onRequireAuth={() =>
                   toast.error("Please log in to add to favorites!")
                 }

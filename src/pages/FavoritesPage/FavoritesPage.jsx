@@ -90,6 +90,10 @@ export default function FavoritesPage() {
     return result;
   }, [filter, favorites]);
 
+  const handleRemoveFavorite = (id) => {
+    setFavorites((prev) => prev.filter((nanny) => nanny.id !== id));
+  };
+
   if (loading) return <Loader />;
   if (error) return <p className={css.warning}>{error}</p>;
   if (!user) return <p className={css.warning}>You are not authorized</p>;
@@ -99,7 +103,10 @@ export default function FavoritesPage() {
   return (
     <section className={css.section_nannies}>
       <FilterBar onFilterChange={setFilter} />
-      <NanniesList nannies={filteredFavorites} />
+      <NanniesList
+        nannies={filteredFavorites}
+        onRemoveFavorite={handleRemoveFavorite}
+      />
     </section>
   );
 }

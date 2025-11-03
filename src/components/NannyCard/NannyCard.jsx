@@ -13,7 +13,7 @@ import {
 import { dbFirestore } from "../../firebase";
 import AppointmentModal from "../AppointmentModal/AppointmentModal";
 
-export default function NannyCard({ nanny }) {
+export default function NannyCard({ nanny, onRemoveFavorite }) {
   const auth = getAuth();
   const [user, setUser] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -69,6 +69,10 @@ export default function NannyCard({ nanny }) {
       toast.success(
         isFavorite ? "Removed from favorites ❌" : "Added to favorites ❤️"
       );
+
+      if (isFavorite && onRemoveFavorite) {
+        onRemoveFavorite(nanny.id);
+      }
     } catch (err) {
       toast.error("An error occurred 😢");
     }

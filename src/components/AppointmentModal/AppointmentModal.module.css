@@ -63,18 +63,13 @@
   width: 100%;
 }
 
-.timeIcon {
+/* .timeIcon {
   position: absolute;
   right: 12px;
   top: 16px;
   fill: none;
   pointer-events: none;
-}
-
-.inputInContainer.react-time-picker .react-time-picker__clock,
-.inputInContainer.react-time-picker .react-time-picker__clear-button {
-  display: none;
-}
+} */
 
 .inputInContainer,
 .input,

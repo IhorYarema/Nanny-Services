@@ -15,7 +15,10 @@ export const appointmentSchema = yup.object().shape({
     .positive("Age must be positive")
     .integer("Age must be a whole number")
     .required("Child's age is required"),
-  meetingTime: yup.string().required("Please select meeting time"),
+  meetingTime: yup
+    .string()
+    .matches(/^([0-1]\d|2[0-2]):([0-5]\d)$/, "Enter a valid time (HH:MM)")
+    .required("Meeting time is required"),
   email: yup
     .string()
     .email("Enter a valid email")

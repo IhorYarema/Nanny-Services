@@ -1,0 +1,72 @@
+.timeInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  font-family: inherit;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  background-color: rgba(251, 251, 251, 1);
+  color: rgba(17, 16, 28, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+  min-width: 232px;
+}
+
+.input::placeholder {
+  font-family: inherit;
+  color: rgba(17, 16, 28, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  fill: none;
+  pointer-events: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.option {
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.option:hover {
+  background: #f0f4ff;
+}
+
+.active {
+  background: #e1ebff;
+  font-weight: 600;
+}

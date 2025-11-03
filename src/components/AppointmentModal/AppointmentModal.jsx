@@ -1,14 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from "./AppointmentModal.module.css";
 import Modal from "../Modal/Modal";
 import { appointmentSchema } from "./validation";
-import Icon from "../Icon/Icon";
-import TimePicker from "react-time-picker";
+import CustomTimePicker from "./CustomTimePicker/CustomTimePicker";
 
 export default function AppointmentModal({ nanny, onClose }) {
-  const [time, setTime] = useState("00:00");
   const {
     register,
     handleSubmit,
@@ -35,8 +33,7 @@ export default function AppointmentModal({ nanny, onClose }) {
   const onSubmit = (data) => {
     console.log("📩 Appointment request:", { ...data, nanny: nanny.name });
     alert(`✅ Request sent to ${nanny.name}!`);
-    reset({ phone: "+380" });
-    reset();
+    reset({ phone: "+380", meetingTime: "00:00" });
     onClose();
   };
 
@@ -103,26 +100,14 @@ export default function AppointmentModal({ nanny, onClose }) {
             <p className={css.error}>{errors.childAge.message}</p>
           )}
 
-          <div className={css.timeInputWrapper}>
-            <Icon name="clock" size={20} className={css.timeIcon} />
-            {/* <input
-              type="time"
-              {...register("meetingTime")}
-              className={css.inputInContainer}
-            /> */}
-            <TimePicker
-              type="time"
-              {...register("meetingTime")}
-              onChange={setTime}
-              value={time}
-              className={css.inputInContainer}
-              clearIcon={null}
-              clockIcon={null}
-            />
-            {errors.meetingTime && (
-              <p className={css.error}>{errors.meetingTime.message}</p>
-            )}
-          </div>
+          <CustomTimePicker
+            value={watch("meetingTime")}
+            onChange={(val) => setValue("meetingTime", val)}
+            className={css.inputInContainer}
+          />
+          {errors.meetingTime && (
+            <p className={css.error}>{errors.meetingTime.message}</p>
+          )}
         </div>
 
         <input
