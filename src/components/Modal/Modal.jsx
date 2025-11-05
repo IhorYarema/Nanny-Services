@@ -4,7 +4,6 @@ import Icon from "../Icon/Icon";
 import Backdrop from "../Backdrop/Backdrop";
 
 export default function Modal({ children, onClose }) {
-  // Закриття по клавіші Esc
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -15,7 +14,6 @@ export default function Modal({ children, onClose }) {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
-  // Закриття по кліку на бекдроп
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
