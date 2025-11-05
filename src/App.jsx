@@ -46,10 +46,17 @@ function App() {
         </Suspense>
       </div>
       <Toaster
-        position="top-center"
+        position="top-right"
         toastOptions={{
           duration: 3000,
-          style: { background: "#333", color: "#fff" },
+          style: {
+            background: "rgba(240, 63, 59, 1)",
+            color: "#fff",
+            zIndex: 999999999999999,
+            borderRadius: "12px",
+            padding: "12px 18px",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
+          },
         }}
       />
     </div>

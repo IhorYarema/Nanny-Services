@@ -52,7 +52,6 @@ export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
 
       closeModal();
     } catch (error) {
-      console.error("❌ Register error:", error.message);
       alert("Registration failed. Please try again.");
     }
   };

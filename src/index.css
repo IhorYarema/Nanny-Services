@@ -83,3 +83,13 @@ div {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+[data-sonner-toaster],
+[data-toast-container],
+[data-hot-toast],
+#__react-hot-toast,
+#hot-toast,
+[data-react-hot-toast] {
+  z-index: 99999999999999999999999999999999999;
+  position: fixed;
+}

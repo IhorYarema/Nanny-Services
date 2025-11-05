@@ -5,6 +5,7 @@ import css from "./AppointmentModal.module.css";
 import Modal from "../Modal/Modal";
 import { appointmentSchema } from "./validation";
 import CustomTimePicker from "./CustomTimePicker/CustomTimePicker";
+import { toast } from "react-hot-toast";
 
 export default function AppointmentModal({ nanny, onClose }) {
   const {
@@ -31,10 +32,17 @@ export default function AppointmentModal({ nanny, onClose }) {
   }, [phoneValue, setValue]);
 
   const onSubmit = (data) => {
-    console.log("📩 Appointment request:", { ...data, nanny: nanny.name });
-    alert(`✅ Request sent to ${nanny.name}!`);
+    toast.success(`✅ Request sent to ${nanny.name}!`);
     reset({ phone: "+380", meetingTime: "00:00" });
     onClose();
+  };
+
+  const onError = (errors) => {
+    Object.values(errors).forEach((err) => {
+      if (err && err.message) {
+        toast.error(err.message, { duration: 4000 });
+      }
+    });
   };
 
   return (
@@ -54,16 +62,13 @@ export default function AppointmentModal({ nanny, onClose }) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <form onSubmit={handleSubmit(onSubmit, onError)} className={css.form}>
         <div className={css.inputsContainer}>
           <input
             {...register("address")}
             className={css.inputInContainer}
             placeholder="Address"
           />
-          {errors.address && (
-            <p className={css.error}>{errors.address.message}</p>
-          )}
 
           <input
             {...register("phone")}
@@ -87,7 +92,6 @@ export default function AppointmentModal({ nanny, onClose }) {
               }
             }}
           />
-          {errors.phone && <p className={css.error}>{errors.phone.message}</p>}
         </div>
 
         <div className={css.inputsContainer}>
@@ -96,18 +100,12 @@ export default function AppointmentModal({ nanny, onClose }) {
             className={css.inputInContainer}
             placeholder="Child's age"
           />
-          {errors.childAge && (
-            <p className={css.error}>{errors.childAge.message}</p>
-          )}
 
           <CustomTimePicker
             value={watch("meetingTime")}
             onChange={(val) => setValue("meetingTime", val)}
             className={css.inputInContainer}
           />
-          {errors.meetingTime && (
-            <p className={css.error}>{errors.meetingTime.message}</p>
-          )}
         </div>
 
         <input
@@ -115,25 +113,18 @@ export default function AppointmentModal({ nanny, onClose }) {
           className={css.input}
           placeholder="Email"
         />
-        {errors.email && <p className={css.error}>{errors.email.message}</p>}
 
         <input
           {...register("parentName")}
           className={css.input}
           placeholder="Father's or mother's name"
         />
-        {errors.parentName && (
-          <p className={css.error}>{errors.parentName.message}</p>
-        )}
 
         <textarea
           {...register("comment")}
           className={css.textarea}
           placeholder="Comment"
         />
-        {errors.comment && (
-          <p className={css.error}>{errors.comment.message}</p>
-        )}
 
         <button type="submit" className={css.submitBtn}>
           Send
