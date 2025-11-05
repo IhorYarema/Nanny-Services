@@ -14,7 +14,7 @@ import {
 
 export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
   const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState(null); // "login" | "register"
+  const [modalType, setModalType] = useState(null);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -34,25 +34,20 @@ export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
     setModalType(null);
   };
 
-  // ✅ Реєстрація + авто-вхід
   const handleRegister = async (data) => {
     try {
-      // створюємо користувача
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
 
-      // додаємо ім’я
       await updateProfile(userCredential.user, {
         displayName: data.name,
       });
 
-      // ⬇️ одразу оновлюємо локальний стан без перезавантаження
       setUser({ ...auth.currentUser });
 
-      // 🔥 оновлюємо користувача в Firebase (важливо!)
       await auth.currentUser.reload();
 
       closeModal();
@@ -62,7 +57,6 @@ export default function Navigation({ user, isLoggedIn, onLogout, setUser }) {
     }
   };
 
-  // ✅ Функція логіну
   const handleLogin = async (data) => {
     try {
       const userCredential = await signInWithEmailAndPassword(

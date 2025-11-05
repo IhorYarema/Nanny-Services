@@ -15,7 +15,6 @@ const Nannies = lazy(() => import("./pages/Nannies/Nannies"));
 function App() {
   const [user, setUser] = useState(null);
 
-  // 🔥 Слухаємо зміни авторизації Firebase
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
@@ -23,7 +22,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // 🔹 Logout
   const handleLogout = async () => {
     try {
       await signOut(auth);
