@@ -8,7 +8,7 @@ export default function CustomTimePicker({ value, onChange }) {
   const inputRef = useRef(null);
 
   const times = [];
-  for (let h = 9; h <= 22; h++) {
+  for (let h = 9; h <= 10; h++) {
     times.push(`${String(h).padStart(2, "0")}:00`);
     times.push(`${String(h).padStart(2, "0")}:30`);
   }
@@ -78,6 +78,7 @@ export default function CustomTimePicker({ value, onChange }) {
       </div>
       {isOpen && (
         <ul className={css.dropdown}>
+          <p className={css.dropdownText}>Meeting time</p>
           {times.map((t) => (
             <li
               key={t}

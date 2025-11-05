@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .timeInputWrapper {
   position: relative;
   display: flex;
@@ -42,31 +48,61 @@
 
 .dropdown {
   position: absolute;
+  padding: 16px;
   top: 100%;
-  left: 0;
+  right: 0;
   width: 100%;
-  background: #fff;
+  max-width: 151px;
+  max-height: 180px;
+  background: rgba(255, 255, 255, 1);
   border-radius: 12px;
-  border: 1px solid #ccc;
   margin-top: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
   max-height: 220px;
   overflow-y: auto;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 4px;
+}
+
+.dropdownText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.dropdown {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .option {
-  padding: 10px 14px;
-  font-size: 15px;
+  height: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  vertical-align: middle;
+
   cursor: pointer;
-  transition: background 0.2s;
+  transition: color 0.2s;
+  color: rgba(17, 16, 28, 0.3);
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .option:hover {
-  background: #f0f4ff;
+  color: rgba(17, 16, 28, 1);
 }
 
 .active {
-  background: #e1ebff;
-  font-weight: 600;
+  color: rgba(17, 16, 28, 1);
 }
